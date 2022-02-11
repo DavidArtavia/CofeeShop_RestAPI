@@ -12,7 +12,6 @@ exports.createOrder = async(req, res) => {
         id_order = getCreateID.createID();
     };
     db.query(orders_queries.INSERT_INTO_ORDERS, [id_order, user, createdAt, createdAt, 'pending']);
-
     items.forEach(element => {
         var id_product = element.id;
         var qty = element.qty;
@@ -26,6 +25,7 @@ exports.createOrder = async(req, res) => {
 };
 
 exports.getOrders = async(req, res) => {
+    //TODO: Mostar esta estructura
     const response_orders = await db.query(orders_queries.SELECT_ALL_ORDERS);
     const aux = response_orders.rows;
     var all_info = [];
